@@ -1,0 +1,42 @@
+<section class="vh-50 bg-image" >
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-50 mt-3">
+        <div class="row d-flex justify-content-center align-items-center h-50">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Withdraw</h2>
+  
+                <form [formGroup]="withdrawForm" (ngSubmit)="Withdraw()">
+                  <div *ngIf="err!=''" class="alert alert-danger">{{err}}</div>
+                  <div class="form-outline mb-4">
+                    <input class="form-control" placeholder="To" formControlName="to"/>
+                    <div class="alert alert-danger mt-3" *ngIf="to?.invalid && ( to?.dirty ||to?.touched)">
+                      <p *ngIf="to?.errors?.required"> * Account is required </p>
+                      <p *ngIf="to?.errors?.minLength">Not valid account Number</p>
+                      <p *ngIf="to?.errors?.maxLength">Not valid account Number</p>
+                  </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input class="form-control" placeholder="Balance" formControlName="value"/>
+                    <div class="alert alert-danger mt-3" *ngIf="value?.invalid && ( value?.dirty ||value?.touched)">
+                      <p *ngIf="value?.errors?.required"> * balance is required </p>
+                  </div>
+                  </div>
+  
+  
+                  <div class="d-flex justify-content-center mt-5">
+                    <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Deposite</button>
+                  </div>
+
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

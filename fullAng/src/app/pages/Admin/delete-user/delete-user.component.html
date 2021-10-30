@@ -1,0 +1,20 @@
+<form [formGroup]="deleteForm" (ngSubmit)="delete()" >
+    <div class="form-group">
+      <label for="exampleInputPassword1">Account Number</label>
+      <input class="form-control" formControlName="accountNo" placeholder="Account Number">
+      <div class="alert alert-danger my-3" *ngIf="accountNo?.invalid && ( accountNo?.dirty ||accountNo?.touched)">
+        <p *ngIf="accountNo?.errors?.required"> * Account Number is required</p>
+        <p *ngIf="accountNo?.errors?.minLength"> * Account Number must be 12 number</p>
+        <p *ngIf="accountNo?.errors?.maxlength"> * Account Number must be 12 number</p>
+      </div>
+      <div class="alert alert-danger my-3" *ngIf="AccountError!=''">{{AccountError}}</div>
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+
+<section *ngIf="isDeleted" mt-5>
+    <div class="alert alert-success">
+        <strong>Success!</strong> Account deleted
+      </div>
+</section>

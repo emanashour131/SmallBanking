@@ -1,0 +1,22 @@
+<section>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Account ID</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Account Number</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Amdin Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let user of usersdata">
+            <th scope="row">{{user._id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.accountNo}}</td>
+            <td>{{user.value}}</td>
+            <td>{{user.adminId}}</td>
+          </tr>
+        </tbody>
+      </table>
+</section>

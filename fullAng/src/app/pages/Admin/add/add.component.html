@@ -1,0 +1,32 @@
+
+<form [formGroup]="addForm" (ngSubmit)="add()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">User Name</label>
+      <input  class="form-control" formControlName="name" placeholder="userName">
+      <small id="emailHelp" class="form-text text-muted">We'll never share this userName with anyone else.</small>
+      <div class="alert alert-danger mt-3" *ngIf="name?.invalid && ( name?.dirty ||name?.touched)">
+        <p *ngIf="name?.errors?.required"> * User Name is required </p>
+      </div>
+      <div class="alert alert-danger my-3" *ngIf="nameError!=''">{{nameError}}</div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Account Number</label>
+      <input class="form-control" formControlName="accountNo" placeholder="Account Number">
+      <div class="alert alert-danger my-3" *ngIf="accountNo?.invalid && ( accountNo?.dirty ||accountNo?.touched)">
+        <p *ngIf="accountNo?.errors?.required"> * Account Number is required</p>
+        <p *ngIf="accountNo?.errors?.minLength"> * Account Number must be 12 number</p>
+        <p *ngIf="accountNo?.errors?.maxlength"> * Account Number must be 12 number</p>
+      </div>
+      <div class="alert alert-danger my-3" *ngIf="AccountError!=''">{{AccountError}}</div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Account Balance</label>
+        <input class="form-control" formControlName="value" placeholder="Account Balance">
+        <div class="alert alert-danger my-3" *ngIf="value?.invalid && ( value?.dirty ||value?.touched)">
+            <p *ngIf="value?.errors?.required"> * Account Balance is required</p>
+        </div>
+    </div>
+   
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>

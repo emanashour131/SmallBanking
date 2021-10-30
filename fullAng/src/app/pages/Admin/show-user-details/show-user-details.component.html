@@ -1,0 +1,119 @@
+
+
+<form [formGroup]="searchForm" (ngSubmit)="search()">
+    <div class="form-group">
+      <label for="exampleInputPassword1">Account Number</label>
+      <input class="form-control" formControlName="accountNo" placeholder="Account Number">
+      <div class="alert alert-danger my-3" *ngIf="accountNo?.invalid && ( accountNo?.dirty ||accountNo?.touched)">
+        <p *ngIf="accountNo?.errors?.required"> * Account Number is required</p>
+        <p *ngIf="accountNo?.errors?.minLength"> * Account Number must be 12 number</p>
+        <p *ngIf="accountNo?.errors?.maxlength"> * Account Number must be 12 number</p>
+      </div>
+      <div class="alert alert-danger my-3" *ngIf="AccountError!=''">{{AccountError}}</div>
+    </div>
+
+   
+    <button type="submit" class="btn btn-success">Search</button>
+  </form>
+
+  <div class="container" *ngIf="isOrderd">
+    <div class="container">
+      <div class="main-body">
+            <div class="row gutters-md">
+              <div class="col">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h6 class="mb-0">user Name</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{userdata.name}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">User Id</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{userdata._id}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Account Number</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{userdata.accountNo}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Account Balance</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{userdata.value}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{userdata.email}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Phone</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{userdata.phone}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Transactions</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <section>
+                              <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Transaction Type</th>
+                                      <th scope="col">Transaction id</th>
+                                      <th scope="col">Account Number (from)</th>
+                                      <th scope="col">Account Number (to)</th>
+                                      <th scope="col">Balance</th>
+                                      <th scope="col">executedOn</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr  *ngFor="let user of userdata.transactions">
+                                      <th scope="row">{{user.transaction_Type}}</th>
+                                      <td>{{user._id}}</td>
+                                      <td>{{user.from}}</td>
+                                      <td>{{user.to}}</td>
+                                      <td>{{user.value}}</td>
+                                      <td>{{user.executedOn}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                          </section>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+      </div>
+    </div>

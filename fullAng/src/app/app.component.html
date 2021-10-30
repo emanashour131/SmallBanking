@@ -1,0 +1,5 @@
+<app-navbar *ngIf="!_global.isAdmin"></app-navbar>
+<app-navbar2 *ngIf="_global.isAdmin"></app-navbar2>
+<router-outlet></router-outlet>
+
+ <app-footer></app-footer> 
